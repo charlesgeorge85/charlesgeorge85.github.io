@@ -150,6 +150,149 @@
       margin-top: 40px;
     }
 
+    /* ===== ADMIN LOGIN MODAL STYLING ===== */
+    .admin-btn {
+      position: fixed;
+      top: 10px;
+      right: 10px;
+      padding: 10px 15px;
+      background: transparent;
+      color: #f5c518;
+      border: none;
+      border-radius: 50%;
+      width: 50px;
+      height: 50px;
+      font-size: 20px;
+      cursor: pointer;
+      z-index: 1000;
+      font-weight: bold;
+    }
+
+    .admin-btn:hover {
+      color: white;
+    }
+
+    .modal {
+      display: none;
+      position: fixed;
+      z-index: 2000;
+      left: 0;
+      top: 0;
+      width: 100%;
+      height: 100%;
+      background-color: rgba(0, 0, 0, .8);
+    }
+
+    .modal-content {
+      background-color: #1a1a1a;
+      margin: 10% auto;
+      padding: 30px;
+      border: 1px solid #f5c518;
+      border-radius: 10px;
+      width: 90%;
+      max-width: 500px;
+      color: white;
+    }
+
+    .close {
+      color: #f5c518;
+      float: right;
+      font-size: 28px;
+      font-weight: bold;
+      cursor: pointer;
+    }
+
+    .close:hover {
+      color: white;
+    }
+
+    .login-form input {
+      width: 100%;
+      padding: 12px;
+      margin: 10px 0;
+      border: 1px solid #f5c518;
+      border-radius: 5px;
+      background: rgba(255, 255, 255, .1);
+      color: white;
+    }
+
+    .login-form input::placeholder {
+      color: rgba(255, 255, 255, .5);
+    }
+
+    .login-form button {
+      width: 100%;
+      padding: 12px;
+      margin: 15px 0;
+      background: #f5c518;
+      color: black;
+      border: none;
+      border-radius: 5px;
+      font-weight: bold;
+      cursor: pointer;
+    }
+
+    .login-form button:hover {
+      background: white;
+    }
+
+    .admin-panel {
+      display: none;
+    }
+
+    .admin-panel h3 {
+      color: #f5c518;
+      margin-bottom: 20px;
+    }
+
+    .admin-panel label {
+      display: block;
+      margin: 15px 0 5px 0;
+      color: white;
+      font-weight: bold;
+    }
+
+    .admin-panel select {
+      width: 100%;
+      padding: 10px;
+      margin-bottom: 15px;
+      background: rgba(255, 255, 255, .1);
+      color: white;
+      border: 1px solid #f5c518;
+      border-radius: 5px;
+    }
+
+    .admin-panel button {
+      width: 100%;
+      padding: 12px;
+      background: #4CAF50;
+      color: white;
+      border: none;
+      border-radius: 5px;
+      font-weight: bold;
+      cursor: pointer;
+      margin-bottom: 10px;
+    }
+
+    .admin-panel button:hover {
+      background: #45a049;
+    }
+
+    .logout-btn {
+      width: 100%;
+      padding: 12px;
+      background: #ff6b6b;
+      color: white;
+      border: none;
+      border-radius: 5px;
+      font-weight: bold;
+      cursor: pointer;
+    }
+
+    .logout-btn:hover {
+      background: #ff5252;
+    }
+
   </style>
 </head>
 
@@ -272,7 +415,7 @@
   <!-- ===== CURRENT AVAILABILITY SECTION ===== -->
   <section class="sec">
     <h2>Current Availability</h2>
-    <div class="card">
+    <div class="card current-availability-content">
       🟢 commercial space is currently available:
       <br><br>
       
@@ -301,7 +444,7 @@
     
     <!-- Phone Contact -->
     Phone:
-    <b>+91 7907931834</b>
+    <b id="contactPhone">+91 7907931834</b>
     <br>
 
     <!-- Location & Map Link -->
@@ -318,6 +461,234 @@
   <footer>
     © 2026 GeorgeSquare Commercial Complex
   </footer>
+
+  <!-- ===== ADMIN LOGIN MODAL ===== -->
+  <button class="admin-btn" onclick="openAdminModal()">⚙️</button>
+
+  <div id="adminModal" class="modal">
+    <div class="modal-content">
+      <span class="close" onclick="closeAdminModal()">&times;</span>
+      
+      <div id="loginForm" class="login-form">
+        <h3>Admin Login</h3>
+        <input type="password" id="adminPassword" placeholder="Enter admin password">
+        <button onclick="loginAdmin()">Login</button>
+      </div>
+
+      <div id="adminPanel" class="admin-panel">
+        <h3>Manage Availability</h3>
+        
+        <label for="room1Ground">Ground Floor - Room 1:</label>
+        <select id="room1Ground" onchange="updateAvailability()">
+          <option value="occupied">Occupied</option>
+          <option value="available">Available</option>
+        </select>
+
+        <label for="room2Ground">Ground Floor - Room 2:</label>
+        <select id="room2Ground" onchange="updateAvailability()">
+          <option value="available">Available</option>
+          <option value="occupied">Occupied</option>
+        </select>
+
+        <label for="room1First">First Floor - Room 1:</label>
+        <select id="room1First" onchange="updateAvailability()">
+          <option value="occupied">Occupied</option>
+          <option value="available">Available</option>
+        </select>
+
+        <label for="room2First">First Floor - Room 2:</label>
+        <select id="room2First" onchange="updateAvailability()">
+          <option value="occupied">Occupied</option>
+          <option value="available">Available</option>
+        </select>
+
+        <label for="coveredArea">Second Floor - Covered Open Area:</label>
+        <select id="coveredArea" onchange="updateAvailability()">
+          <option value="available">Available</option>
+          <option value="occupied">Occupied</option>
+        </select>
+
+        <label for="contactPhoneInput">Contact Phone Number:</label>
+        <input type="text" id="contactPhoneInput" placeholder="Enter phone number" onchange="updatePhoneNumber()">
+
+        <button onclick="logoutAdmin()" class="logout-btn">Logout</button>
+      </div>
+    </div>
+  </div>
+
+  <!-- ===== JAVASCRIPT FUNCTIONALITY ===== -->
+  <script>
+    const ADMIN_PASSWORD = "admin123";
+    const AVAILABILITY_KEY = "georgeSquareAvailability";
+    const PHONE_KEY = "georgeSquarePhone";
+
+    // Initialize availability data
+    function initializeAvailability() {
+      let data = localStorage.getItem(AVAILABILITY_KEY);
+      if (!data) {
+        let defaultData = {
+          room1Ground: "occupied",
+          room2Ground: "available",
+          room1First: "occupied",
+          room2First: "occupied",
+          coveredArea: "available"
+        };
+        localStorage.setItem(AVAILABILITY_KEY, JSON.stringify(defaultData));
+      }
+      
+      // Initialize phone number
+      let phone = localStorage.getItem(PHONE_KEY);
+      if (!phone) {
+        localStorage.setItem(PHONE_KEY, "+91 7907931834");
+      } else {
+        document.getElementById("contactPhone").textContent = phone;
+      }
+      
+      loadAvailabilityUI();
+    }
+
+    // Load availability from localStorage to UI
+    function loadAvailabilityUI() {
+      let data = JSON.parse(localStorage.getItem(AVAILABILITY_KEY));
+      if (data) {
+        document.getElementById("room1Ground").value = data.room1Ground;
+        document.getElementById("room2Ground").value = data.room2Ground;
+        document.getElementById("room1First").value = data.room1First;
+        document.getElementById("room2First").value = data.room2First;
+        document.getElementById("coveredArea").value = data.coveredArea;
+      }
+      
+      // Load phone number
+      let phone = localStorage.getItem(PHONE_KEY);
+      if (phone) {
+        document.getElementById("contactPhoneInput").value = phone;
+        document.getElementById("contactPhone").textContent = phone;
+      }
+      
+      updateTableAndAvailability();
+    }
+
+    // Update availability in localStorage
+    function updateAvailability() {
+      let data = {
+        room1Ground: document.getElementById("room1Ground").value,
+        room2Ground: document.getElementById("room2Ground").value,
+        room1First: document.getElementById("room1First").value,
+        room2First: document.getElementById("room2First").value,
+        coveredArea: document.getElementById("coveredArea").value
+      };
+      localStorage.setItem(AVAILABILITY_KEY, JSON.stringify(data));
+      updateTableAndAvailability();
+    }
+
+    // Update table rows dynamically
+    function updateTableAndAvailability() {
+      let data = JSON.parse(localStorage.getItem(AVAILABILITY_KEY));
+      const rows = document.querySelectorAll("tbody tr");
+      
+      // Update table
+      rows[0].children[4].innerHTML = `<span class="${data.room1Ground}">${data.room1Ground.charAt(0).toUpperCase() + data.room1Ground.slice(1)}</span>`;
+      rows[1].children[4].innerHTML = `<span class="${data.room2Ground}">${data.room2Ground.charAt(0).toUpperCase() + data.room2Ground.slice(1)}</span>`;
+      rows[2].children[4].innerHTML = `<span class="${data.room1First}">${data.room1First.charAt(0).toUpperCase() + data.room1First.slice(1)}</span>`;
+      rows[3].children[4].innerHTML = `<span class="${data.room2First}">${data.room2First.charAt(0).toUpperCase() + data.room2First.slice(1)}</span>`;
+      rows[4].children[4].innerHTML = `<span class="${data.coveredArea}">${data.coveredArea.charAt(0).toUpperCase() + data.coveredArea.slice(1)}</span>`;
+
+      // Update current availability section
+      updateCurrentAvailabilitySection(data);
+    }
+
+    // Update current availability section dynamically
+    function updateCurrentAvailabilitySection(data) {
+      let availableSpaces = [];
+      
+      // Check all available spaces
+      if (data.room1Ground === "available") {
+        availableSpaces.push('<b>Ground Floor — Room 1</b><br>Area: 140 sqft<br>Suitable for: Shop / Salon.');
+      }
+      
+      if (data.room2Ground === "available") {
+        availableSpaces.push('<b>Ground Floor — Room 2</b><br>Area: 140 sqft<br>Suitable for: Retail shop, office, service centre, mobile shop, salon or consultancy.');
+      }
+      
+      if (data.room1First === "available") {
+        availableSpaces.push('<b>First Floor — Room 1</b><br>Area: 495 sqft<br>Suitable for: Office / Clinic.');
+      }
+      
+      if (data.room2First === "available") {
+        availableSpaces.push('<b>First Floor — Room 2</b><br>Area: 248 sqft<br>Suitable for: Studio / Consultancy.');
+      }
+      
+      if (data.coveredArea === "available") {
+        availableSpaces.push('<b>Second Floor — Covered Open Area</b><br>Area: 753 sqft<br>Suitable for: Warehouse / Training center, storage, workshop, studio or showroom.');
+      }
+
+      let content = '';
+      if (availableSpaces.length > 0) {
+        content = '🟢 ' + availableSpaces.length + ' commercial space(s) is/are currently available:<br><br>' + availableSpaces.join('<br><br>');
+      } else {
+        content = '🔴 No commercial spaces currently available. Please check back soon!';
+      }
+      
+      let element = document.querySelector(".current-availability-content");
+      if (element) {
+        element.innerHTML = content;
+      }
+    }
+
+    // Admin modal functions
+    function openAdminModal() {
+      document.getElementById("adminModal").style.display = "block";
+    }
+
+    function closeAdminModal() {
+      document.getElementById("adminModal").style.display = "none";
+    }
+
+    function loginAdmin() {
+      const password = document.getElementById("adminPassword").value;
+      if (password === ADMIN_PASSWORD) {
+        document.getElementById("loginForm").style.display = "none";
+        document.getElementById("adminPanel").style.display = "block";
+        loadAvailabilityUI();
+        alert("Logged in successfully!");
+      } else {
+        alert("Incorrect password!");
+        document.getElementById("adminPassword").value = "";
+      }
+    }
+
+    function logoutAdmin() {
+      document.getElementById("loginForm").style.display = "block";
+      document.getElementById("adminPanel").style.display = "none";
+      document.getElementById("adminPassword").value = "";
+      closeAdminModal();
+    }
+
+    // Update phone number
+    function updatePhoneNumber() {
+      const phone = document.getElementById("contactPhoneInput").value;
+      if (phone.trim() !== "") {
+        localStorage.setItem(PHONE_KEY, phone);
+        document.getElementById("contactPhone").textContent = phone;
+        alert("Phone number updated successfully!");
+      } else {
+        alert("Please enter a valid phone number!");
+      }
+    }
+
+    // Close modal when clicking outside
+    window.onclick = function(event) {
+      const modal = document.getElementById("adminModal");
+      if (event.target === modal) {
+        modal.style.display = "none";
+      }
+    }
+
+    // Initialize on page load
+    window.onload = function() {
+      initializeAvailability();
+    }
+  </script>
 
 </body>
 
