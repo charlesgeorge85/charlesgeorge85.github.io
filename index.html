@@ -1,103 +1,579 @@
 <!DOCTYPE html>
-<html lang="en">
+<html>
+
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <meta name="description" content="Welcome to GeorgeSquare...!">
-    <title>GeorgeSquare Shopping Complex</title>
-    <style>
-        body {
-            font-family: Arial, sans-serif;
-            margin: 0;
-            padding: 0;
-            background-color: #f4f4f4;
-        }
-        header {
-            background-color: #333;
-            color: #fff;
-            padding: 1em 0;
-            text-align: center;
-        }
-        nav {
-            background-color: #444;
-            padding: 10px;
-            text-align: center;
-        }
-        nav a {
-            color: white;
-            padding: 14px 20px;
-            text-decoration: none;
-            text-transform: uppercase;
-        }
-        nav a:hover {
-            background-color: #555;
-        }
-        .banner {
-            background-image: url('shopping-complex-banner.png');
-            background-size: cover;
-            height: 1400px;
-            text-align: center;
-            color: white;
-            display: flex;
-            justify-content: center;
-            align-items: center;
-            font-size: 3em;
-        }
-        .section {
-            padding: 20px;
-            text-align: center;
-        }
-        footer {
-            background-color: #333;
-            color: #fff;
-            text-align: center;
-            padding: 1em 0;
-            position: fixed;
-            width: 100%;
-            bottom: 0;
-        }
-    </style>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+
+<title>GeorgeSquare Commercial Complex</title>
+
+<style>
+
+*{
+margin:0;
+padding:0;
+box-sizing:border-box;
+font-family:Arial,sans-serif;
+}
+
+body{
+color:white;
+
+background:
+linear-gradient(
+rgba(0,0,0,.55),
+rgba(0,0,0,.55)
+),
+url('shopping-complex-banner.png');
+
+background-size:cover;
+background-position:center;
+background-attachment:fixed;
+}
+
+
+/* Header */
+
+header{
+
+display:flex;
+justify-content:space-between;
+align-items:center;
+
+padding:25px 8%;
+
+background:rgba(0,0,0,.25);
+
+backdrop-filter:blur(10px);
+
+position:sticky;
+top:0;
+
+}
+
+header h1{
+font-size:32px;
+}
+
+
+nav a{
+
+color:white;
+text-decoration:none;
+margin-left:25px;
+
+}
+
+nav a:hover{
+color:#f5c518;
+}
+
+
+
+/* Hero */
+
+.hero{
+
+height:85vh;
+
+display:flex;
+flex-direction:column;
+justify-content:center;
+align-items:center;
+
+text-align:center;
+
+}
+
+.hero h2{
+
+font-size:58px;
+margin-bottom:20px;
+
+}
+
+.hero p{
+
+font-size:22px;
+max-width:700px;
+
+}
+
+
+
+.btn{
+
+display:inline-block;
+
+margin-top:30px;
+
+padding:15px 30px;
+
+background:#f5c518;
+
+color:black;
+
+border-radius:8px;
+
+text-decoration:none;
+
+font-weight:bold;
+
+}
+
+
+
+/* Section */
+
+.sec{
+
+margin:50px 8%;
+
+padding:40px;
+
+background:rgba(255,255,255,.10);
+
+backdrop-filter:blur(12px);
+
+border-radius:20px;
+
+}
+
+
+.sec h2{
+margin-bottom:25px;
+}
+
+
+
+/* Card */
+
+.card{
+
+padding:25px;
+
+background:rgba(255,255,255,.08);
+
+border-radius:12px;
+
+}
+
+
+
+/* Table */
+
+table{
+
+width:100%;
+
+border-collapse:collapse;
+
+}
+
+
+th,td{
+
+padding:16px;
+
+border:1px solid rgba(255,255,255,.2);
+
+}
+
+
+th{
+
+background:rgba(255,255,255,.2);
+
+}
+
+
+/* Availability */
+
+.available{
+
+color:#4CAF50;
+
+font-weight:bold;
+
+}
+
+
+.occupied{
+
+color:#ff6b6b;
+
+font-weight:bold;
+
+}
+
+
+/* List */
+
+ul{
+
+padding-left:20px;
+
+line-height:2;
+
+}
+
+
+/* Footer */
+
+footer{
+
+text-align:center;
+
+padding:30px;
+
+background:rgba(0,0,0,.5);
+
+margin-top:40px;
+
+}
+
+</style>
+
 </head>
+
+
 <body>
 
-    <header>
-        <h1>GeorgeSquare Shopping Complex</h1>
-    </header>
 
-    <nav>
-        <a href="#about">About Us</a>
-        <a href="#shops">Shops</a>
-        <a href="#services">Services</a>
-        <a href="#contact">Contact Us</a>
-    </nav>
 
-    <section class="banner">
-        <div>Welcome to GeorgeSquare</div>
-    </section>
+<header>
 
-    <section id="about" class="section">
-        <h2>About GeorgeSquare</h2>
-        <p>GeorgeSquare. Located at the heart of the city.</p>
-    </section>
+<h1>
 
-    <section id="shops" class="section">
-        <h2>Our Shops</h2>
-        <p>Explore a variety of shops floors.</p>
-    </section>
+GeorgeSquare
 
-    <section id="services" class="section">
-        <h2>Services</h2>
-        <p>Office Space available</p>
-    </section>
+</h1>
 
-    <section id="contact" class="section">
-        <h2>Contact Us</h2>
-        <p>For inquiries, call us at (123) 456-7890 or email us at info@georgesquare.com</p>
-    </section>
 
-    <footer>
-        &copy; 2024 GeorgeSquare. All Rights Reserved.
-    </footer>
+<nav>
+
+<a href="#">Home</a>
+
+<a href="#">Spaces</a>
+
+<a href="#">Facilities</a>
+
+<a href="#">Contact</a>
+
+</nav>
+
+</header>
+
+
+
+
+<section class="hero">
+
+<h2>
+
+Commercial<br>
+
+Spaces for Rent
+
+</h2>
+
+
+<p>
+
+Road-facing commercial building ideal for
+shops, offices, clinics and businesses.
+
+</p>
+
+
+<a class="btn" href="#contact">
+
+Enquire Now
+
+</a>
+
+</section>
+
+
+
+
+<section class="sec">
+
+<h2>
+
+About Property
+
+</h2>
+
+
+<div class="card">
+
+Independent commercial building with multiple rental spaces.
+
+Suitable for:
+
+<br><br>
+
+• Shops<br>
+• Offices<br>
+• Clinics<br>
+• Tuition Centres<br>
+• Consultancy<br>
+• Salons<br>
+• Warehousing<br>
+
+</div>
+
+</section>
+
+
+
+
+<section class="sec">
+
+<h2>
+
+Available Spaces
+
+</h2>
+
+
+<table>
+
+<tr>
+
+<th>Floor</th>
+
+<th>Unit</th>
+
+<th>Area</th>
+
+<th>Suitable For</th>
+
+<th>Availability</th>
+
+</tr>
+
+
+
+<tr>
+
+<td>Ground</td>
+
+<td>Room 1</td>
+
+<td>13 sqm</td>
+
+<td>Shop / Salon</td>
+
+<td class="occupied">
+
+Occupied
+
+</td>
+
+</tr>
+
+
+
+<tr>
+
+<td>Ground</td>
+
+<td>Room 2</td>
+
+<td>13 sqm</td>
+
+<td>Retail / Office</td>
+
+<td class="available">
+
+Available
+
+</td>
+
+</tr>
+
+
+
+<tr>
+
+<td>First</td>
+
+<td>Room 1</td>
+
+<td>46 sqm</td>
+
+<td>Office / Clinic</td>
+
+<td class="occupied">
+
+Occupied
+
+</td>
+
+</tr>
+
+
+
+<tr>
+
+<td>First</td>
+
+<td>Room 2</td>
+
+<td>23 sqm</td>
+
+<td>Studio / Consultancy</td>
+
+<td class="occupied">
+
+Occupied
+
+</td>
+
+</tr>
+
+
+
+<tr>
+
+<td>Second</td>
+
+<td>Covered Open Area</td>
+
+<td>70 sqm</td>
+
+<td>Warehouse / Training</td>
+
+<td class="occupied">
+
+Occupied
+
+</td>
+
+</tr>
+
+
+</table>
+
+</section>
+
+
+
+
+<section class="sec">
+
+<h2>
+
+Facilities
+
+</h2>
+
+
+<ul>
+
+<li>Prime road frontage</li>
+
+<li>Excellent commercial visibility</li>
+
+<li>Independent access</li>
+
+<li>Parking space</li>
+
+<li>Covered rooftop area</li>
+
+<li>Suitable for retail & office</li>
+
+<li>Solar rooftop support</li>
+
+</ul>
+
+</section>
+
+
+
+
+<section class="sec">
+
+<h2>
+
+Current Availability
+
+</h2>
+
+
+<div class="card">
+
+🟢 One commercial space is currently available:
+
+<br><br>
+
+<b>
+
+Ground Floor — Room 2
+
+</b>
+
+<br>
+
+Area: 13 sqm
+
+<br>
+
+Suitable for:
+
+Retail shop, office, service centre,
+mobile shop, salon or consultancy.
+
+</div>
+
+</section>
+
+
+
+
+<section
+class="sec"
+id="contact">
+
+<h2>
+
+Contact
+
+</h2>
+
+
+Phone:
+
+<b>
+
++91 7907931834
+
+</b>
+
+<br>
+
+Location:
+
+St Francis Xavier Church Rd, Kathrikadavu, Kaloor, Kochi, Ernakulam, Kerala 682017
+<br><br>
+
+Schedule a site visit for rental enquiry.
+
+</section>
+
+
+
+
+<footer>
+
+© 2026 GeorgeSquare Commercial Complex
+
+</footer>
+
+
 
 </body>
+
 </html>
